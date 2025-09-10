@@ -14,11 +14,11 @@ include:
       config_dir: "deployments/portainer-vm-1"
       remote_host: "portainer-vm.margusm.dev"
       remote_user: "margus"
-      remote_path: "deployments/prometheus-portainer-vm-1"
+      remote_config: "deployments/prometheus-portainer-vm-1/config"
   - component: $CI_SERVER_FQDN/components/docker/deploy@~latest
     inputs:
       as: "portainer-vm-1-deploy"
       local_path: "deployments/portainer-vm-1"
       remote_host: "portainer-vm.margusm.dev"
       remote_user: "margus"
-      remote_config: "deployments/prometheus-portainer-vm-1/config"
+      remote_path: "deployments/prometheus-portainer-vm-1"
