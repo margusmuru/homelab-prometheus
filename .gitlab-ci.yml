@@ -8,13 +8,13 @@ include:
     inputs:
       as: "docker-lint"
       local_path: "deployments/portainer-vm-1"
-  - component: $CI_SERVER_FQDN/components/docker/config@~latest
-    inputs:
-      as: "portainer-vm-1-config"
-      config_dir: "deployments/portainer-vm-1/config"
-      remote_host: "portainer-vm.margusm.dev"
-      remote_user: "margus"
-      remote_config: "deployments/prometheus-portainer-vm-1/config"
+#  - component: $CI_SERVER_FQDN/components/docker/config@~latest
+#    inputs:
+#      as: "portainer-vm-1-config"
+#      config_path: "deployments/portainer-vm-1/config"
+#      remote_host: "portainer-vm.margusm.dev"
+#      remote_user: "margus"
+#      remote_config_path: "deployments/prometheus-portainer-vm-1/config"
   - component: $CI_SERVER_FQDN/components/docker/deploy@~latest
     inputs:
       as: "portainer-vm-1-deploy"
@@ -22,3 +22,33 @@ include:
       remote_host: "portainer-vm.margusm.dev"
       remote_user: "margus"
       remote_path: "deployments/prometheus-portainer-vm-1"
+
+config-test:
+  stage: config
+  image: alpine:latest
+  variables:
+    CONFIG_PATH: "deployments/portainer-vm-1/config"
+    SSH_KEY: $SSH_KEY_GITLAB_RUNNER
+    REMOTE_HOST: "portainer-vm.margusm.dev"
+    REMOTE_USER: "margus"
+    REMOTE_CONFIG_PATH: "deployments/prometheus-portainer-vm-1/config"
+  before_script:
+    - echo "Before → Executing..."
+    - apk add --no-cache curl openssh-client
+    - echo "$SSH_KEY" > id_rsa && chmod 600 id_rsa
+    - eval $(ssh-agent -s)
+    - ssh-add id_rsa
+  script: |
+    echo "Script → Executing..."
+    echo "Script → Copying config files to remote host"
+    ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_HOST} "mkdir -p $REMOTE_CONFIG_PATH"
+    ls
+    ls $CONFIG_PATH/
+    scp -r $CONFIG_PATH/. ${REMOTE_USER}@${REMOTE_HOST}:$REMOTE_CONFIG_PATH/
+    echo "Script → Executing remote commands"
+    echo "Script ✓ Done"
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - '$CONFIG_PATH/**'
+    - when: manual
