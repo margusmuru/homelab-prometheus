@@ -10,7 +10,7 @@ include:
       local_path: "deployments/portainer-vm-1"
   - component: $CI_SERVER_FQDN/components/docker/config@~latest
     inputs:
-      as: "portainer-vm-1-deploy"
+      as: "portainer-vm-1-config"
       config_dir: "deployments/portainer-vm-1/config"
       remote_host: "portainer-vm.margusm.dev"
       remote_user: "margus"
