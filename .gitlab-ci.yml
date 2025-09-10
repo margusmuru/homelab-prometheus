@@ -8,6 +8,9 @@ include:
     inputs:
       as: "docker-lint"
       local_path: "deployments/portainer-vm-1"
+
+# copy configs
+  # portainer-vm
   - component: $CI_SERVER_FQDN/components/docker/config-dir-copy@~latest
     inputs:
       as: "portainer-vm-1-config"
@@ -15,6 +18,17 @@ include:
       remote_host: "portainer-vm.margusm.dev"
       remote_user: "margus"
       remote_config_path: "deployments/prometheus-portainer-vm-1/config"
+  # cloudy-vm
+  - component: $CI_SERVER_FQDN/components/docker/config-dir-copy@~latest
+    inputs:
+      as: "cloudy-vm-1-config"
+      config_path: "deployments/cloudy-vm-1/config"
+      remote_host: "cloudy-vm.margusm.dev"
+      remote_user: "margus"
+      remote_config_path: "deployments/cloudy-vm-1/config"
+
+# deploy
+  # portainer-vm
   - component: $CI_SERVER_FQDN/components/docker/deploy@~latest
     inputs:
       as: "portainer-vm-1-deploy"
@@ -22,3 +36,11 @@ include:
       remote_host: "portainer-vm.margusm.dev"
       remote_user: "margus"
       remote_path: "deployments/prometheus-portainer-vm-1"
+  # cloudy-vm
+  - component: $CI_SERVER_FQDN/components/docker/deploy@~latest
+    inputs:
+      as: "cloudy-vm-1-deploy"
+      local_path: "deployments/cloudy-vm-1"
+      remote_host: "cloudy-vm.margusm.dev"
+      remote_user: "margus"
+      remote_path: "deployments/prometheus-cloudy-vm-1"
