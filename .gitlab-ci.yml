@@ -42,8 +42,6 @@ config-test:
     echo "Script → Executing..."
     echo "Script → Copying config files to remote host"
     ssh -o StrictHostKeyChecking=no ${REMOTE_USER}@${REMOTE_HOST} "mkdir -p $REMOTE_CONFIG_PATH"
-    ls
-    ls $CONFIG_PATH/
     scp -r $CONFIG_PATH/. ${REMOTE_USER}@${REMOTE_HOST}:$REMOTE_CONFIG_PATH/
     echo "Script → Executing remote commands"
     echo "Script ✓ Done"
