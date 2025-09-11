@@ -8,29 +8,35 @@ prometheus-cloudy-vm-1:
   trigger:
     include:
       - local: deployments/prometheus-cloudy-vm-1/.gitlab-ci.yml
+    strategy: depend
 
 node-exporter-cloudy-vm-1:
   trigger:
     include:
       - local: deployments/node-exporter-cloudy-vm-1/.gitlab-ci.yml
+    strategy: depend
 
 cadvisor-cloudy-vm-1:
   trigger:
     include:
       - local: deployments/cadvisor-cloudy-vm-1/.gitlab-ci.yml
+    strategy: depend
 
 # portainer
 prometheus-portainer-vm-1:
   trigger:
     include:
       - local: deployments/prometheus-portainer-vm-1/.gitlab-ci.yml
+    strategy: depend
 
 node-exporter-portainer-vm-1:
   trigger:
     include:
       - local: deployments/node-exporter-portainer-vm-1/.gitlab-ci.yml
+    strategy: depend
 
 cadvisor-portainer-vm-1:
   trigger:
     include:
       - local: deployments/cadvisor-portainer-vm-1/.gitlab-ci.yml
+    strategy: depend
