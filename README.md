@@ -14,10 +14,57 @@ Prometheus, a Cloud Native Computing Foundation project, is a systems and servic
 | Deployment               | Location           | Tags            | Status     | Url                                                              |
 | ------------------------ | ------------------ | --------------- | ---------- | ---------------------------------------------------------------- |
 | prometheus-portainer-vm-1 | portainer-vm | ![icon](.attachments/d.png) | **active** | https://prometheus-portainer.margusm.dev/<br>http://192.168.50.102:9090<br> |
+| prometheus-cloudy-vm-1 | cloudy-vm | ![icon](.attachments/d.png) | **active** | https://prometheus-cloudy.margusm.dev/<br>http://192.168.40.102:9090<br> |
 
 # References
-- ![icon](.attachments/github-icon.png)  [Github mirror](https://github.com/margusmuru/homelab-jackett)
+- ![icon](.attachments/github-icon.png)  [Github mirror](https://github.com/margusmuru/homelab-prometheus)
 - ![icon](.attachments/github-icon.png)  [Prometheus Github](https://github.com/prometheus/prometheus)
 - ![icon](.attachments/url-icon.png)   https://prometheus.io/
+
+
+
+# Extension components
+
+## node-exporter
+![icon](.attachments/prometheus-icon.png) </br>
+
+</br>
+Node exporter is an official [Prometheus exporter](https://prometheus.io/docs/instrumenting/exporters/?ref=devopscube.com) for capturing all the [Linux](https://devopscube.com/list-linux-networking-troubleshooting-and-commands-beginners/) system-related metrics.
+It collects all the hardware and Operating System level metrics that are exposed by the kernel.
+You can use the node exporter to collect the system metrics from all your Linux systems. Check this article on [node monitoring using node-exporter](https://devopscube.com/monitor-linux-servers-prometheus-node-exporter/).
+</br>
+</br>
+
+## ![icon](.attachments/d.png)/![icon](.attachments/k.png) Deployments
+
+</br>
+
+| Deployment               | Location           | Tags            | Status     | Url                                                              |
+| ------------------------ | ------------------ | --------------- | ---------- | ---------------------------------------------------------------- |
+| prometheus-portainer-vm-1 | portainer-vm | ![icon](.attachments/d.png) | **active** | - |
+| prometheus-cloudy-vm-1 | cloudy-vm | ![icon](.attachments/d.png) | **active** | - |
+
+## References
+- ![icon](.attachments/github-icon.png)  [node-exporter Github](https://github.com/prometheus/node_exporter)
+
+## cAdvisor
+![icon](.attachments/google-icon.png) </br>
+
+</br>
+cAdvisor (Container Advisor) provides container users an understanding of the resource usage and performance characteristics of their running containers. It is a running daemon that collects, aggregates, processes, and exports information about running containers. 
+</br>
+</br>
+
+## ![icon](.attachments/d.png)/![icon](.attachments/k.png) Deployments
+
+</br>
+
+| Deployment               | Location           | Tags            | Status     | Url                                                              |
+| ------------------------ | ------------------ | --------------- | ---------- | ---------------------------------------------------------------- |
+| cadvisor-portainer-vm-1 | portainer-vm | ![icon](.attachments/d.png) | **active** | http://192.168.50.102:8081 |
+| cadvisor-cloudy-vm-1 | cloudy-vm | ![icon](.attachments/d.png) | **active** | http://192.168.40.102:8081 |
+
+## References
+- ![icon](.attachments/github-icon.png)  [cAdvisor Github](https://github.com/google/cadvisor)
 
 
