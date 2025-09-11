@@ -1,0 +1,17 @@
+stages:
+  - test
+  - deploy
+
+include:
+  - component: $CI_SERVER_FQDN/components/docker/config-docker@~latest
+    inputs:
+      as: "docker-lint"
+      local_path: "deployments/node-exporter-cloudy-vm-1"
+
+  - component: $CI_SERVER_FQDN/components/docker/deploy@~latest
+    inputs:
+      as: "cloudy-vm-1-deploy"
+      local_path: "deployments/node-exporter-cloudy-vm-1"
+      remote_host: "cloudy-vm.margusm.dev"
+      remote_user: "margus"
+      remote_path: "deployments/node-exporter-cloudy-vm-1"

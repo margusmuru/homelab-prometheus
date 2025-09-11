@@ -3,12 +3,34 @@ stages:
   - config
   - deploy
 
+# cloudy
 prometheus-cloudy-vm-1:
   trigger:
     include:
       - local: deployments/prometheus-cloudy-vm-1/.gitlab-ci.yml
 
+node-exporter-cloudy-vm-1:
+  trigger:
+    include:
+      - local: deployments/node-exporter-cloudy-vm-1/.gitlab-ci.yml
+
+cadvisor-cloudy-vm-1:
+  trigger:
+    include:
+      - local: deployments/cadvisor-cloudy-vm-1/.gitlab-ci.yml
+
+# portainer
 prometheus-portainer-vm-1:
   trigger:
     include:
       - local: deployments/prometheus-portainer-vm-1/.gitlab-ci.yml
+
+node-exporter-portainer-vm-1:
+  trigger:
+    include:
+      - local: deployments/node-exporter-portainer-vm-1/.gitlab-ci.yml
+
+cadvisor-portainer-vm-1:
+  trigger:
+    include:
+      - local: deployments/cadvisor-portainer-vm-1/.gitlab-ci.yml

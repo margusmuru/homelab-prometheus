@@ -7,7 +7,7 @@ include:
   - component: $CI_SERVER_FQDN/components/docker/config-docker@~latest
     inputs:
       as: "docker-lint"
-      local_path: "deployments/prometheus-portainer-vm-1"
+      local_path: "deployments/prometheus-cloudy-vm-1"
 
   - component: $CI_SERVER_FQDN/components/docker/config-dir-copy@~latest
     inputs:
