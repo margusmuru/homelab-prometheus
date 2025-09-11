@@ -48,7 +48,7 @@ You can use the node exporter to collect the system metrics from all your Linux 
 - ![icon](.attachments/github-icon.png)  [node-exporter Github](https://github.com/prometheus/node_exporter)
 
 ## cAdvisor
-![icon](.attachments/google-icon.png) </br>
+![icon](.attachments/cadvisor-icon.png) </br>
 
 </br>
 cAdvisor (Container Advisor) provides container users an understanding of the resource usage and performance characteristics of their running containers. It is a running daemon that collects, aggregates, processes, and exports information about running containers. 
