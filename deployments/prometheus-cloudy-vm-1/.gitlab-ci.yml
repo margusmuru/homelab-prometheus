@@ -8,6 +8,8 @@ include:
     inputs:
       as: "docker-lint"
       local_path: "deployments/prometheus-cloudy-vm-1"
+    rules:
+      - if: $CI_PIPELINE_SOURCE == "parent_pipeline"
 
   - component: $CI_SERVER_FQDN/components/docker/config-dir-copy@~latest
     inputs:
