@@ -4,12 +4,12 @@ stages:
   - config
   - deploy
 
-cloudy-pipeline:
+prometheus-cloudy-vm-1:
   trigger:
     include:
       - local: deployments/prometheus-cloudy-vm-1/.gitlab-ci.yml
 
-portainer-pipeline:
+prometheus-portainer-vm-1:
   trigger:
     include:
       - local: deployments/prometheus-portainer-vm-1/.gitlab-ci.yml
