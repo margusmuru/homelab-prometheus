@@ -1,5 +1,8 @@
 stages:
   - switch
+  - test
+  - config
+  - deploy
 
 cloudy-pipeline:
   trigger:
