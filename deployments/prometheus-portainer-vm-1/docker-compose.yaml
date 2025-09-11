@@ -20,3 +20,4 @@ networks:
     name: monitoring
     driver: bridge
     attachable: true
+    

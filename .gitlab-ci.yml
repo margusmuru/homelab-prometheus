@@ -1,5 +1,4 @@
 stages:
-  - switch
   - test
   - config
   - deploy
