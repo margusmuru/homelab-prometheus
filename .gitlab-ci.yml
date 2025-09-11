@@ -8,7 +8,7 @@ prometheus-cloudy-vm-1:
   trigger:
     include:
       - local: deployments/prometheus-cloudy-vm-1/.gitlab-ci.yml
-    strategy: depend
+    strategy: mirror
 
 node-exporter-cloudy-vm-1:
   trigger:
