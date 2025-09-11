@@ -1,7 +1,13 @@
 stages:
+  - run_always
   - test
   - config
   - deploy
+
+pipeline_complete_if_no_action:
+  stage: run_always
+  script:
+    - echo "Child pipeline is considered successful if no manual action is taken."
 
 include:
   - component: $CI_SERVER_FQDN/components/docker/config-docker@~latest

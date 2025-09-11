@@ -1,15 +1,19 @@
 stages:
+  - run_always
   - test
   - config
   - deploy
+
+pipeline_complete_if_no_action:
+  stage: run_always
+  script:
+    - echo "Child pipeline is considered successful if no manual action is taken."
 
 include:
   - component: $CI_SERVER_FQDN/components/docker/config-docker@~latest
     inputs:
       as: "docker-lint"
       local_path: "deployments/prometheus-cloudy-vm-1"
-    rules:
-      - if: $CI_PIPELINE_SOURCE == "parent_pipeline"
 
   - component: $CI_SERVER_FQDN/components/docker/config-dir-copy@~latest
     inputs:
