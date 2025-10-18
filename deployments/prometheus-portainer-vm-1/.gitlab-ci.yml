@@ -16,7 +16,6 @@ include:
       remote_host: "portainer-vm.margusm.dev"
       remote_user: "margus"
       remote_config_path: "deployments/prometheus-portainer-vm-1/config"
-      run_on_changes_to: "deployments/prometheus-portainer-vm-1"
 
   - component: $CI_SERVER_FQDN/components/docker/deploy-nr@~latest
     inputs:
