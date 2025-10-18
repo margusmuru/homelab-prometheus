@@ -9,18 +9,33 @@ prometheus-cloudy-vm-1:
     include:
       - local: deployments/prometheus-cloudy-vm-1/.gitlab-ci.yml
     strategy: mirror
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - 'deployments/prometheus-cloudy-vm-1/**/*'
+    - when: manual
 
 node-exporter-cloudy-vm-1:
   trigger:
     include:
       - local: deployments/node-exporter-cloudy-vm-1/.gitlab-ci.yml
     strategy: mirror
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - 'deployments/node-exporter-cloudy-vm-1/**/*'
+    - when: manual
 
 cadvisor-cloudy-vm-1:
   trigger:
     include:
       - local: deployments/cadvisor-cloudy-vm-1/.gitlab-ci.yml
     strategy: mirror
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - 'deployments/cadvisor-cloudy-vm-1/**/*'
+    - when: manual
 
 # portainer
 prometheus-portainer-vm-1:
@@ -28,15 +43,42 @@ prometheus-portainer-vm-1:
     include:
       - local: deployments/prometheus-portainer-vm-1/.gitlab-ci.yml
     strategy: mirror
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - 'deployments/prometheus-portainer-vm-1/**/*'
+    - when: manual
 
 node-exporter-portainer-vm-1:
   trigger:
     include:
       - local: deployments/node-exporter-portainer-vm-1/.gitlab-ci.yml
     strategy: mirror
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - 'deployments/node-exporter-portainer-vm-1/**/*'
+    - when: manual
 
 cadvisor-portainer-vm-1:
   trigger:
     include:
       - local: deployments/cadvisor-portainer-vm-1/.gitlab-ci.yml
     strategy: mirror
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - 'deployments/cadvisor-portainer-vm-1/**/*'
+    - when: manual
+
+# dev-2
+prometheus-dev-2-vm-1:
+  trigger:
+    include:
+      - local: deployments/prometheus-dev-2-vm-1/.gitlab-ci.yml
+    strategy: mirror
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - 'deployments/prometheus-dev-2-vm-1/**/*'
+    - when: manual

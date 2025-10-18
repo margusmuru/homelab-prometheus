@@ -1,0 +1,23 @@
+---
+services:
+  prometheus:
+    image: docker.io/prom/prometheus:v3.7.1
+    container_name: prometheus-dev-2-vm-1
+    ports:
+      - 9090:9090
+    command: "--config.file=/etc/prometheus/prometheus.yaml"
+    volumes:
+      - ./config/prometheus.yaml:/etc/prometheus/prometheus.yaml:ro
+      - prometheus-dev-2-vm-1-data:/prometheus
+    restart: unless-stopped
+    networks:
+      - grafana
+volumes:
+  prometheus-dev-2-vm-1-data:
+    driver: local
+networks:
+  grafana:
+    name: grafana
+    driver: bridge
+    external: true
+    attachable: true

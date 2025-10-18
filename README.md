@@ -15,6 +15,7 @@ Prometheus, a Cloud Native Computing Foundation project, is a systems and servic
 | ------------------------ | ------------------ | --------------- | ---------- | ---------------------------------------------------------------- |
 | prometheus-portainer-vm-1 | portainer-vm | ![icon](.attachments/d.png) | **active** | https://prometheus-portainer.margusm.dev/<br>http://192.168.50.102:9090<br> |
 | prometheus-cloudy-vm-1 | cloudy-vm | ![icon](.attachments/d.png) | **active** | https://prometheus-cloudy.margusm.dev/<br>http://192.168.40.102:9090<br> |
+| prometheus-dev-2-vm-1 | dev-2-vm | ![icon](.attachments/d.png) | **active** | http://192.168.40.112:9090<br> |
 
 # References
 - ![icon](.attachments/github-icon.png)  [Github mirror](https://github.com/margusmuru/homelab-prometheus)
