@@ -82,3 +82,36 @@ prometheus-dev-2-vm-1:
       changes:
         - 'deployments/prometheus-dev-2-vm-1/**/*'
     - when: manual
+
+prometheus-dev-2-vm-2:
+  trigger:
+    include:
+      - local: deployments/prometheus-dev-2-vm-2/.gitlab-ci.yml
+    strategy: mirror
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - 'deployments/prometheus-dev-2-vm-2/**/*'
+    - when: manual
+
+node-exporter-dev-2-vm-2:
+  trigger:
+    include:
+      - local: deployments/node-exporter-dev-2-vm-2/.gitlab-ci.yml
+    strategy: mirror
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - 'deployments/node-exporter-dev-2-vm-2/**/*'
+    - when: manual
+
+cadvisor-dev-2-vm-2:
+  trigger:
+    include:
+      - local: deployments/cadvisor-dev-2-vm-2/.gitlab-ci.yml
+    strategy: mirror
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - 'deployments/cadvisor-dev-2-vm-2/**/*'
+    - when: manual
