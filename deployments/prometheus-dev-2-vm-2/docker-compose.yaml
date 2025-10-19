@@ -11,13 +11,13 @@ services:
       - prometheus-dev-2-vm-2-data:/prometheus
     restart: unless-stopped
     networks:
-      - grafana
+      - monitoring
 volumes:
   prometheus-dev-2-vm-2-data:
     driver: local
 networks:
-  grafana:
-    name: grafana
+  monitoring:
+    name: monitoring
     driver: bridge
     external: true
     attachable: true
