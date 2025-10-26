@@ -1,7 +1,7 @@
 ---
 services:
   prometheus:
-    image: docker.io/prom/prometheus:v3.7.1
+    image: docker.io/prom/prometheus:v3.7.2
     container_name: prometheus-dev-2-vm-2
     ports:
       - 9091:9090
