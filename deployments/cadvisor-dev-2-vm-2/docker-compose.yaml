@@ -7,10 +7,15 @@ services:
       - 8081:8080
     volumes:
       - /:/rootfs:ro
-      - /var/run:/var/run:ro
       - /sys:/sys:ro
-      - /var/snap/docker/common/var-lib-docker/:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
+      # 1. Correct Socket Path for Snap
+      - /var/snap/docker/common/run/docker.sock:/var/run/docker.sock:ro
+      # 2. Correct Data Path for Snap
+      - /var/snap/docker/common/var-lib-docker/:/var/lib/docker:ro
+    command:
+      # 3. Tell cAdvisor to use the path we mounted above
+      - '--docker_root=/var/lib/docker'
     devices:
       - /dev/kmsg
     privileged: true
