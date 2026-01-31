@@ -149,3 +149,26 @@ cadvisor-dev-2-vm-2:
       changes:
         - 'deployments/cadvisor-dev-2-vm-2/**/*'
     - when: manual
+
+# prod-1
+node-exporter-prod-1-vm-1:
+  trigger:
+    include:
+      - local: deployments/node-exporter-prod-1-vm-1/.gitlab-ci.yml
+    strategy: mirror
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - 'deployments/node-exporter-prod-1-vm-1/**/*'
+    - when: manual
+
+cadvisor-prod-1-vm-1:
+  trigger:
+    include:
+      - local: deployments/cadvisor-prod-1-vm-1/.gitlab-ci.yml
+    strategy: mirror
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - 'deployments/cadvisor-prod-1-vm-1/**/*'
+    - when: manual
