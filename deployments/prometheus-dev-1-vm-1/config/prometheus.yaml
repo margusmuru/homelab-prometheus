@@ -13,4 +13,4 @@ scrape_configs:
 
   - job_name: 'cadvisor'
     static_configs:
-      - targets: ['cadvisor-dev-1-vm-1:8081']
+      - targets: ['192.168.40.111:8081'] # using IP cause docker dns fails for some reason
