@@ -28,7 +28,7 @@ volumes:
   prometheus-dev-1-vm-1-data:
     driver: local
 networks:
-  grafana:
+  monitoring:
     name: monitoring
     driver: bridge
     external: true
