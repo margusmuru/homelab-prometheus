@@ -44,10 +44,10 @@ You can use the node exporter to collect the system metrics from all your Linux 
 
 | Deployment                   | Location           | Tags                        | Status     | Url                                                              |
 | ---------------------------- | ------------------ | --------------------------- | ---------- | ---------------------------------------------------------------- |
-| node-exporter-portainer-vm-1 | portainer-vm       | ![icon](.attachments/d.png) | **active** | - |
-| node-exporter-cloudy-vm-1    | cloudy-vm          | ![icon](.attachments/d.png) | **active** | - |
-| node-exporter-dev-1-vm-1     | dev-1-vm           | ![icon](.attachments/d.png) | **active** | - |
-| node-exporter-dev-2-vm-2     | dev-2-vm           | ![icon](.attachments/d.png) | **active** | - |
+| node-exporter-portainer-vm-1 | portainer-vm       | ![icon](.attachments/d.png) | **active** | http://192.168.50.102:9100 |
+| node-exporter-cloudy-vm-1    | cloudy-vm          | ![icon](.attachments/d.png) | **active** | http://192.168.40.102:9100 |
+| node-exporter-dev-1-vm-1     | dev-1-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.111:9100 |
+| node-exporter-dev-2-vm-2     | dev-2-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.112:9100 |
 
 ## References
 - ![icon](.attachments/github-icon.png)  [node-exporter Github](https://github.com/prometheus/node_exporter)
