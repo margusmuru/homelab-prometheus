@@ -23,13 +23,13 @@ services:
       - prometheus-dev-1-vm-1-data:/prometheus
     restart: unless-stopped
     networks:
-      - grafana
+      - monitoring
 volumes:
   prometheus-dev-1-vm-1-data:
     driver: local
 networks:
   grafana:
-    name: grafana
+    name: monitoring
     driver: bridge
     external: true
     attachable: true
