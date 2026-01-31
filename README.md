@@ -13,11 +13,11 @@ Prometheus, a Cloud Native Computing Foundation project, is a systems and servic
 
 | Deployment                | Location           | Tags                        | Status       | Url                                                                         |
 | ------------------------- | ------------------ | --------------------------- | ------------ | --------------------------------------------------------------------------- |
-| prometheus-portainer-vm-1 | portainer-vm       | ![icon](.attachments/d.png) | **inactive** | https://prometheus-portainer.margusm.dev/<br>http://192.168.50.102:9090<br> |
-| prometheus-cloudy-vm-1    | cloudy-vm          | ![icon](.attachments/d.png) | **inactive** | https://prometheus-cloudy.margusm.dev/<br>http://192.168.40.102:9090<br>    |
-| prometheus-dev-1-vm-1     | dev-1-vm           | ![icon](.attachments/d.png) | **active**   | http://192.168.40.111:9090<br>  
-| prometheus-dev-2-vm-1     | dev-2-vm           | ![icon](.attachments/d.png) | **inactive** | http://192.168.40.112:9090<br>                                              |
-| prometheus-dev-2-vm-2     | dev-2-vm           | ![icon](.attachments/d.png) | **inactive** | http://192.168.40.112:9091<br>http://prometheus-dev-2.margusm.dev           |
+| prometheus-portainer-vm-1 | portainer-vm       | ![icon](.attachments/d.png) | **inactive** | http://192.168.50.102:9090 |
+| prometheus-cloudy-vm-1    | cloudy-vm          | ![icon](.attachments/d.png) | **inactive** | http://192.168.40.102:9090    |
+| prometheus-dev-1-vm-1     | dev-1-vm           | ![icon](.attachments/d.png) | **active**   | http://192.168.40.111:9090  
+| prometheus-dev-2-vm-1     | dev-2-vm           | ![icon](.attachments/d.png) | **inactive** | http://192.168.40.112:9090                                              |
+| prometheus-prod-1-vm-2    | prod-1-vm          | ![icon](.attachments/d.png) | **inactive** | http://192.168.40.121:9091          |
 
 # References
 - ![icon](.attachments/github-icon.png)  [Github mirror](https://github.com/margusmuru/homelab-prometheus)
@@ -48,6 +48,7 @@ You can use the node exporter to collect the system metrics from all your Linux 
 | node-exporter-cloudy-vm-1    | cloudy-vm          | ![icon](.attachments/d.png) | **active** | http://192.168.40.102:9100 |
 | node-exporter-dev-1-vm-1     | dev-1-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.111:9100 |
 | node-exporter-dev-2-vm-2     | dev-2-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.112:9100 |
+| node-exporter-prod-1-vm-1    | prod-1-vm          | ![icon](.attachments/d.png) | **active** | http://192.168.40.121:9100 |
 
 ## References
 - ![icon](.attachments/github-icon.png)  [node-exporter Github](https://github.com/prometheus/node_exporter)
@@ -70,6 +71,7 @@ cAdvisor (Container Advisor) provides container users an understanding of the re
 | cadvisor-cloudy-vm-1     | cloudy-vm          | ![icon](.attachments/d.png) | **active** | http://192.168.40.102:8081 |
 | cadvisor-dev-1-vm-1      | dev-1-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.111:8081 |
 | cadvisor-dev-2-vm-2      | dev-2-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.112:8081 |
+| cadvisor-prod-1-vm-1     | prod-1-vm          | ![icon](.attachments/d.png) | **active** | http://192.168.40.121:8081 |
 
 ## References
 - ![icon](.attachments/github-icon.png)  [cAdvisor Github](https://github.com/google/cadvisor)

@@ -1,0 +1,17 @@
+stages:
+  - test
+  - deploy
+
+include:
+  - component: $CI_SERVER_FQDN/components/docker/config-docker-nr@~latest
+    inputs:
+      as: "docker-lint"
+      local_path: "deployments/cadvisor-prod-1-vm-2"
+
+  - component: $CI_SERVER_FQDN/components/docker/deploy-nr@~latest
+    inputs:
+      as: "prod-1-vm-2-deploy"
+      local_path: "deployments/cadvisor-prod-1-vm-2"
+      remote_host: "prod-1-vm.margusm.dev"
+      remote_user: "margus"
+      remote_path: "deployments/cadvisor-prod-1-vm-2"
