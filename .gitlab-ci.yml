@@ -24,7 +24,6 @@ node-exporter-cloudy-vm-1:
     - if: '$CI_COMMIT_REF_NAME == "main"'
       changes:
         - 'deployments/node-exporter-cloudy-vm-1/**/*'
-    - when: manual
 
 cadvisor-cloudy-vm-1:
   trigger:
@@ -35,7 +34,6 @@ cadvisor-cloudy-vm-1:
     - if: '$CI_COMMIT_REF_NAME == "main"'
       changes:
         - 'deployments/cadvisor-cloudy-vm-1/**/*'
-    - when: manual
 
 # portainer
 prometheus-portainer-vm-1:
@@ -58,7 +56,6 @@ node-exporter-portainer-vm-1:
     - if: '$CI_COMMIT_REF_NAME == "main"'
       changes:
         - 'deployments/node-exporter-portainer-vm-1/**/*'
-    - when: manual
 
 cadvisor-portainer-vm-1:
   trigger:
@@ -69,7 +66,6 @@ cadvisor-portainer-vm-1:
     - if: '$CI_COMMIT_REF_NAME == "main"'
       changes:
         - 'deployments/cadvisor-portainer-vm-1/**/*'
-    - when: manual
 
 # dev-1
 prometheus-dev-1-vm-1:
@@ -92,7 +88,6 @@ node-exporter-dev-1-vm-1:
     - if: '$CI_COMMIT_REF_NAME == "main"'
       changes:
         - 'deployments/node-exporter-dev-1-vm-1/**/*'
-    - when: manual
 
 cadvisor-dev-1-vm-1:
   trigger:
@@ -137,7 +132,6 @@ node-exporter-dev-2-vm-2:
     - if: '$CI_COMMIT_REF_NAME == "main"'
       changes:
         - 'deployments/node-exporter-dev-2-vm-2/**/*'
-    - when: manual
 
 cadvisor-dev-2-vm-2:
   trigger:
@@ -148,7 +142,6 @@ cadvisor-dev-2-vm-2:
     - if: '$CI_COMMIT_REF_NAME == "main"'
       changes:
         - 'deployments/cadvisor-dev-2-vm-2/**/*'
-    - when: manual
 
 # prod-1
 node-exporter-prod-1-vm-1:
@@ -160,7 +153,6 @@ node-exporter-prod-1-vm-1:
     - if: '$CI_COMMIT_REF_NAME == "main"'
       changes:
         - 'deployments/node-exporter-prod-1-vm-1/**/*'
-    - when: manual
 
 cadvisor-prod-1-vm-1:
   trigger:
@@ -171,4 +163,3 @@ cadvisor-prod-1-vm-1:
     - if: '$CI_COMMIT_REF_NAME == "main"'
       changes:
         - 'deployments/cadvisor-prod-1-vm-1/**/*'
-    - when: manual
