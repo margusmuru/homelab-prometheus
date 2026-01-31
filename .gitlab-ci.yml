@@ -71,6 +71,40 @@ cadvisor-portainer-vm-1:
         - 'deployments/cadvisor-portainer-vm-1/**/*'
     - when: manual
 
+# dev-1
+prometheus-dev-1-vm-1:
+  trigger:
+    include:
+      - local: deployments/prometheus-dev-1-vm-1/.gitlab-ci.yml
+    strategy: mirror
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - 'deployments/prometheus-dev-1-vm-1/**/*'
+    - when: manual
+
+node-exporter-dev-1-vm-1:
+  trigger:
+    include:
+      - local: deployments/node-exporter-dev-1-vm-1/.gitlab-ci.yml
+    strategy: mirror
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - 'deployments/node-exporter-dev-1-vm-1/**/*'
+    - when: manual
+
+cadvisor-dev-1-vm-1:
+  trigger:
+    include:
+      - local: deployments/cadvisor-dev-1-vm-1/.gitlab-ci.yml
+    strategy: mirror
+  rules:
+    - if: '$CI_COMMIT_REF_NAME == "main"'
+      changes:
+        - 'deployments/cadvisor-dev-1-vm-1/**/*'
+    - when: manual
+
 # dev-2
 prometheus-dev-2-vm-1:
   trigger:

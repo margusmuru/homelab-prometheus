@@ -1,0 +1,35 @@
+---
+services:
+  prometheus:
+    image: docker.io/prom/prometheus:v3.9.1
+    container_name: prometheus-dev-1-vm-1
+    ports:
+      - 9090:9090
+    command:
+      # Standard config
+      - '--config.file=/etc/prometheus/prometheus.yaml'
+      # Additional config
+      # retention policy is 15 days default. Changed it to 30 days, as more days takes too much storage
+      - '--storage.tsdb.retention.time=30d'
+      # The maximum number of bytes of storage blocks to retain. The oldest data will be removed first. Defaults to 0 or disabled. Units supported: B, KB, MB, GB, TB, PB, EB. Ex: "512MB". Based on powers-of-2, so 1KB is 1024B. Only the persistent blocks are deleted to honor this retention although WAL and m-mapped chunks are counted in the total size. So the minimum requirement for the disk is the peak space taken by the wal (the WAL and Checkpoint) and chunks_head (m-mapped Head chunks) directory combined (peaks every 2 hours).
+      - '--storage.tsdb.retention.size=30GB'
+      # https://prometheus.io/docs/prometheus/latest/feature_flags/#remote-write-receiver
+      # https://prometheus.io/docs/prometheus/latest/storage/#overview
+      - '--web.enable-remote-write-receiver'
+      # https://prometheus.io/docs/prometheus/latest/feature_flags/#exemplars-storage
+      - '--enable-feature=exemplar-storage'
+    volumes:
+      - ./config/prometheus.yaml:/etc/prometheus/prometheus.yaml:ro
+      - prometheus-dev-1-vm-1-data:/prometheus
+    restart: unless-stopped
+    networks:
+      - grafana
+volumes:
+  prometheus-dev-1-vm-1-data:
+    driver: local
+networks:
+  grafana:
+    name: grafana
+    driver: bridge
+    external: true
+    attachable: true
