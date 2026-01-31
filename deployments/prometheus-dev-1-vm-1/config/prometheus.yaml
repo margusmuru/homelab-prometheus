@@ -7,10 +7,37 @@ scrape_configs:
     static_configs:
       - targets: ['localhost:9090']
 
-  - job_name: 'node_exporter'
+
+  - job_name: 'cadvisor-dev-1-vm-1'
+    static_configs:
+      - targets: ['dev-1-vm.margusm.dev:8081']
+
+  - job_name: 'cadvisor-dev-2-vm-2'
+    static_configs:
+      - targets: ['dev-2-vm.margusm.dev:8081']
+
+  - job_name: 'cadvisor-cloudy-vm-1'
+    static_configs:
+      - targets: ['cloudy-vm.margusm.dev:8081']
+
+  - job_name: 'cadvisor-portainer-vm-1'
+    static_configs:
+      - targets: ['portainer-vm.margusm.dev:8081']
+
+
+
+  - job_name: 'node_exporter-dev-1-vm-1'
     static_configs:
       - targets: ['node_exporter-dev-1-vm-1:9100']
 
-  - job_name: 'cadvisor'
+  - job_name: 'node_exporter-dev-2-vm-2'
     static_configs:
-      - targets: ['192.168.40.111:8081'] # using IP cause docker dns fails for some reason
+      - targets: ['dev-2-vm.margusm.dev:9100']
+
+  - job_name: 'node_exporter-cloudy-vm-1'
+    static_configs:
+      - targets: ['cloudy-vm.margusm.dev:9100']
+
+  - job_name: 'node_exporter-portainer-vm-1'
+    static_configs:
+      - targets: ['portainer-vm.margusm.dev:9100']
