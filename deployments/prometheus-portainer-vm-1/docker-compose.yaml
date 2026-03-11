@@ -2,22 +2,22 @@
 services:
   prometheus:
     image: docker.io/prom/prometheus:v3.10.0
-    container_name: prometheus-dev-2-vm-2
+    container_name: prometheus-portainer-vm-1
     ports:
-      - 9091:9090
+      - 9090:9090
     command: "--config.file=/etc/prometheus/prometheus.yaml"
     volumes:
       - ./config/prometheus.yaml:/etc/prometheus/prometheus.yaml:ro
-      - prometheus-dev-2-vm-2-data:/prometheus
+      - prometheus-data:/prometheus
     restart: unless-stopped
     networks:
       - monitoring
 volumes:
-  prometheus-dev-2-vm-2-data:
+  prometheus-data:
     driver: local
 networks:
   monitoring:
     name: monitoring
     driver: bridge
-    external: true
     attachable: true
+    
