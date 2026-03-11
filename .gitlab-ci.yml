@@ -3,18 +3,9 @@ stages:
   - config
   - deploy
 
+##########################
 # cloudy
-prometheus-cloudy-vm-1:
-  trigger:
-    include:
-      - local: deployments/prometheus-cloudy-vm-1/.gitlab-ci.yml
-    strategy: mirror
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
-      changes:
-        - 'deployments/prometheus-cloudy-vm-1/**/*'
-    - when: manual
-
+##########################
 node-exporter-cloudy-vm-1:
   trigger:
     include:
@@ -37,18 +28,9 @@ cadvisor-cloudy-vm-1:
         - 'deployments/cadvisor-cloudy-vm-1/**/*'
     - when: manual
 
+##########################
 # portainer
-prometheus-portainer-vm-1:
-  trigger:
-    include:
-      - local: deployments/prometheus-portainer-vm-1/.gitlab-ci.yml
-    strategy: mirror
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
-      changes:
-        - 'deployments/prometheus-portainer-vm-1/**/*'
-    - when: manual
-
+##########################
 node-exporter-portainer-vm-1:
   trigger:
     include:
@@ -78,9 +60,9 @@ prometheus-dev-1-vm-1:
       - local: deployments/prometheus-dev-1-vm-1/.gitlab-ci.yml
     strategy: mirror
   rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
-      changes:
-        - 'deployments/prometheus-dev-1-vm-1/**/*'
+#    - if: '$CI_COMMIT_REF_NAME == "main"'
+#      changes:
+#        - 'deployments/prometheus-dev-1-vm-1/**/*'
     - when: manual
 
 node-exporter-dev-1-vm-1:
@@ -105,7 +87,9 @@ cadvisor-dev-1-vm-1:
         - 'deployments/cadvisor-dev-1-vm-1/**/*'
     - when: manual
 
+##########################
 # dev-2
+##########################
 prometheus-dev-2-vm-1:
   trigger:
     include:
@@ -123,9 +107,9 @@ prometheus-dev-2-vm-2:
       - local: deployments/prometheus-dev-2-vm-2/.gitlab-ci.yml
     strategy: mirror
   rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
-      changes:
-        - 'deployments/prometheus-dev-2-vm-2/**/*'
+#   - if: '$CI_COMMIT_REF_NAME == "main"'
+#     changes:
+#       - 'deployments/prometheus-dev-2-vm-2/**/*'
     - when: manual
 
 node-exporter-dev-2-vm-2:
@@ -150,7 +134,9 @@ cadvisor-dev-2-vm-2:
         - 'deployments/cadvisor-dev-2-vm-2/**/*'
     - when: manual
 
+##########################
 # prod-1
+##########################
 node-exporter-prod-1-vm-1:
   trigger:
     include:
