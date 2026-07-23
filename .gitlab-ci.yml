@@ -1,160 +1,61 @@
 stages:
   - test
-  - config
   - deploy
 
-##########################
-# cloudy
-##########################
-node-exporter-cloudy-vm-1:
-  trigger:
-    include:
-      - local: deployments/node-exporter-cloudy-vm-1/.gitlab-ci.yml
-    strategy: mirror
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
-      changes:
-        - 'deployments/node-exporter-cloudy-vm-1/**/*'
-    - when: manual
+include:
+# ============================================================
+# node-exporter — identical stateless stack, matrix over all hosts
+# ============================================================
+  - component: $CI_SERVER_FQDN/components/docker/validate-compose@~latest
+    inputs:
+      as: "lint-node-exporter"
+      local_path: "deployments/node-exporter"
+  - component: $CI_SERVER_FQDN/components/docker/deploy-compose-matrix@~latest
+    inputs:
+      as: "deploy-node-exporter"
+      environments: [ cloudy, dev-1, dev-2, portainer, prod-1 ]
+      local_path: "deployments/node-exporter"
+      remote_path: "deployments/node-exporter-$TARGET_ENV-vm-1"
 
-cadvisor-cloudy-vm-1:
-  trigger:
-    include:
-      - local: deployments/cadvisor-cloudy-vm-1/.gitlab-ci.yml
-    strategy: mirror
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
-      changes:
-        - 'deployments/cadvisor-cloudy-vm-1/**/*'
-    - when: manual
+# ============================================================
+# cadvisor — identical stateless stack, matrix over all hosts
+# ============================================================
+  - component: $CI_SERVER_FQDN/components/docker/validate-compose@~latest
+    inputs:
+      as: "lint-cadvisor"
+      local_path: "deployments/cadvisor"
+  - component: $CI_SERVER_FQDN/components/docker/deploy-compose-matrix@~latest
+    inputs:
+      as: "deploy-cadvisor"
+      environments: [ cloudy, dev-1, dev-2, portainer, prod-1 ]
+      local_path: "deployments/cadvisor"
+      remote_path: "deployments/cadvisor-$TARGET_ENV-vm-1"
 
-##########################
-# portainer
-##########################
-node-exporter-portainer-vm-1:
-  trigger:
-    include:
-      - local: deployments/node-exporter-portainer-vm-1/.gitlab-ci.yml
-    strategy: mirror
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
-      changes:
-        - 'deployments/node-exporter-portainer-vm-1/**/*'
-    - when: manual
+# ============================================================
+# prometheus — stateful, one per instance (stable remote_path preserves TSDB)
+# Only two are actually used: dev-1 (central scraper) + dev-2 (remote-write receiver).
+# Both are grafana datasources. cloudy/portainer/dev-2-vm-2 were redundant → removed.
+# ============================================================
+# dev-1 (central scraper)
+  - component: $CI_SERVER_FQDN/components/docker/validate-compose@~latest
+    inputs:
+      as: "lint-prometheus-dev-1"
+      local_path: "deployments/prometheus-dev-1-vm-1"
+  - component: $CI_SERVER_FQDN/components/docker/deploy-compose@~latest
+    inputs:
+      as: "deploy-prometheus-dev-1"
+      environment: "dev-1"                                # host derives to dev-1-vm.margusm.dev
+      local_path: "deployments/prometheus-dev-1-vm-1"
+      remote_path: "deployments/prometheus-dev-1-vm-1"
 
-cadvisor-portainer-vm-1:
-  trigger:
-    include:
-      - local: deployments/cadvisor-portainer-vm-1/.gitlab-ci.yml
-    strategy: mirror
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
-      changes:
-        - 'deployments/cadvisor-portainer-vm-1/**/*'
-    - when: manual
-
-# dev-1
-prometheus-dev-1-vm-1:
-  trigger:
-    include:
-      - local: deployments/prometheus-dev-1-vm-1/.gitlab-ci.yml
-    strategy: mirror
-  rules:
-#    - if: '$CI_COMMIT_REF_NAME == "main"'
-#      changes:
-#        - 'deployments/prometheus-dev-1-vm-1/**/*'
-    - when: manual
-
-node-exporter-dev-1-vm-1:
-  trigger:
-    include:
-      - local: deployments/node-exporter-dev-1-vm-1/.gitlab-ci.yml
-    strategy: mirror
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
-      changes:
-        - 'deployments/node-exporter-dev-1-vm-1/**/*'
-    - when: manual
-
-cadvisor-dev-1-vm-1:
-  trigger:
-    include:
-      - local: deployments/cadvisor-dev-1-vm-1/.gitlab-ci.yml
-    strategy: mirror
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
-      changes:
-        - 'deployments/cadvisor-dev-1-vm-1/**/*'
-    - when: manual
-
-##########################
-# dev-2
-##########################
-prometheus-dev-2-vm-1:
-  trigger:
-    include:
-      - local: deployments/prometheus-dev-2-vm-1/.gitlab-ci.yml
-    strategy: mirror
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
-      changes:
-        - 'deployments/prometheus-dev-2-vm-1/**/*'
-    - when: manual
-
-prometheus-dev-2-vm-2:
-  trigger:
-    include:
-      - local: deployments/prometheus-dev-2-vm-2/.gitlab-ci.yml
-    strategy: mirror
-  rules:
-#   - if: '$CI_COMMIT_REF_NAME == "main"'
-#     changes:
-#       - 'deployments/prometheus-dev-2-vm-2/**/*'
-    - when: manual
-
-node-exporter-dev-2-vm-2:
-  trigger:
-    include:
-      - local: deployments/node-exporter-dev-2-vm-2/.gitlab-ci.yml
-    strategy: mirror
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
-      changes:
-        - 'deployments/node-exporter-dev-2-vm-2/**/*'
-    - when: manual
-
-cadvisor-dev-2-vm-2:
-  trigger:
-    include:
-      - local: deployments/cadvisor-dev-2-vm-2/.gitlab-ci.yml
-    strategy: mirror
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
-      changes:
-        - 'deployments/cadvisor-dev-2-vm-2/**/*'
-    - when: manual
-
-##########################
-# prod-1
-##########################
-node-exporter-prod-1-vm-1:
-  trigger:
-    include:
-      - local: deployments/node-exporter-prod-1-vm-1/.gitlab-ci.yml
-    strategy: mirror
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
-      changes:
-        - 'deployments/node-exporter-prod-1-vm-1/**/*'
-    - when: manual
-
-cadvisor-prod-1-vm-1:
-  trigger:
-    include:
-      - local: deployments/cadvisor-prod-1-vm-1/.gitlab-ci.yml
-    strategy: mirror
-  rules:
-    - if: '$CI_COMMIT_REF_NAME == "main"'
-      changes:
-        - 'deployments/cadvisor-prod-1-vm-1/**/*'
-    - when: manual
+# dev-2 (remote-write receiver, port 9090)
+  - component: $CI_SERVER_FQDN/components/docker/validate-compose@~latest
+    inputs:
+      as: "lint-prometheus-dev-2"
+      local_path: "deployments/prometheus-dev-2-vm-1"
+  - component: $CI_SERVER_FQDN/components/docker/deploy-compose@~latest
+    inputs:
+      as: "deploy-prometheus-dev-2"
+      environment: "dev-2"                                # host derives to dev-2-vm.margusm.dev
+      local_path: "deployments/prometheus-dev-2-vm-1"
+      remote_path: "deployments/prometheus-dev-2-vm-1"
