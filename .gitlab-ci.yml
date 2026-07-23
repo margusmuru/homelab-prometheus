@@ -30,6 +30,7 @@ include:
       environments: [ cloudy, dev-1, dev-2, portainer, prod-1 ]
       local_path: "deployments/cadvisor"
       remote_path: "deployments/cadvisor-$TARGET_ENV-vm-1"
+      substitute_vars: '$CADVISOR_DOCKER_LIB'   # per-host docker-root override (snap on portainer)
 
 # ============================================================
 # prometheus — stateful, one per instance (stable remote_path preserves TSDB)
