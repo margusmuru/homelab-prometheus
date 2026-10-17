@@ -1,4 +1,5 @@
 ---
+# Deployed to every host in the deploy-node-exporter matrix (.gitlab-ci.yml).
 services:
   node_exporter:
     image: quay.io/prometheus/node-exporter:v1.12.1

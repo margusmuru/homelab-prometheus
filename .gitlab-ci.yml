@@ -13,7 +13,7 @@ include:
   - component: $CI_SERVER_FQDN/components/docker/deploy-compose-matrix@~latest
     inputs:
       as: "deploy-node-exporter"
-      environments: [ cloudy, dev-1, dev-2, portainer, prod-1 ]
+      environments: [ cloudy, dev-1, dev-2, portainer, prod-1, valhalla ]
       local_path: "deployments/node-exporter"
       remote_path: "deployments/node-exporter-$TARGET_ENV-vm-1"
 
@@ -27,10 +27,10 @@ include:
   - component: $CI_SERVER_FQDN/components/docker/deploy-compose-matrix@~latest
     inputs:
       as: "deploy-cadvisor"
-      environments: [ cloudy, dev-1, dev-2, prod-1 ] #portainer is broken at the moment
+      environments: [ cloudy, dev-1, dev-2, portainer, prod-1, valhalla ]
       local_path: "deployments/cadvisor"
       remote_path: "deployments/cadvisor-$TARGET_ENV-vm-1"
-      substitute_vars: '$CADVISOR_DOCKER_LIB'   # per-host docker-root override (snap on portainer)
+      substitute_vars: '$CADVISOR_DOCKER_LIB'   # optional per-host docker-root override (default /var/lib/docker)
 
 # ============================================================
 # prometheus — stateful, one per instance (stable remote_path preserves TSDB)

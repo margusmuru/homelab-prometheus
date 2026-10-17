@@ -9,7 +9,7 @@ services:
       - /:/rootfs:ro
       - /var/run:/var/run:ro
       - /sys:/sys:ro
-      # source overridable per host — snap docker (portainer) lives elsewhere
+      # source overridable per host (CADVISOR_DOCKER_LIB) for a non-default docker root
       - ${CADVISOR_DOCKER_LIB:-/var/lib/docker}:/var/lib/docker:ro
       - /dev/disk/:/dev/disk:ro
     devices:

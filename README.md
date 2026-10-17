@@ -46,6 +46,7 @@ You can use the node exporter to collect the system metrics from all your Linux 
 | node-exporter-dev-1-vm-1     | dev-1-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.111:9100 |
 | node-exporter-dev-2-vm-1     | dev-2-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.112:9100 |
 | node-exporter-prod-1-vm-1    | prod-1-vm          | ![icon](.attachments/d.png) | **active** | http://192.168.40.121:9100 |
+| node-exporter-valhalla-vm-1  | valhalla-vm        | ![icon](.attachments/d.png) | **active** | http://192.168.50.10:9100 |
 
 ## References
 - ![icon](.attachments/github-icon.png)  [node-exporter Github](https://github.com/prometheus/node_exporter)
@@ -69,6 +70,7 @@ cAdvisor (Container Advisor) provides container users an understanding of the re
 | cadvisor-dev-1-vm-1      | dev-1-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.111:8081 |
 | cadvisor-dev-2-vm-1      | dev-2-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.112:8081 |
 | cadvisor-prod-1-vm-1     | prod-1-vm          | ![icon](.attachments/d.png) | **active** | http://192.168.40.121:8081 |
+| cadvisor-valhalla-vm-1   | valhalla-vm        | ![icon](.attachments/d.png) | **active** | http://192.168.50.10:8081 |
 
 ## References
 - ![icon](.attachments/github-icon.png)  [cAdvisor Github](https://github.com/google/cadvisor)

@@ -28,6 +28,10 @@ scrape_configs:
     static_configs:
       - targets: ['prod-1-vm.margusm.dev:8081']
 
+  - job_name: 'cadvisor-valhalla-vm-1'
+    static_configs:
+      - targets: ['valhalla-vm.margusm.dev:8081']
+
 
 
   - job_name: 'node_exporter-dev-1-vm-1'
@@ -49,3 +53,7 @@ scrape_configs:
   - job_name: 'node_exporter-prod-1-vm-1'
     static_configs:
       - targets: ['prod-1-vm.margusm.dev:9100']
+
+  - job_name: 'node_exporter-valhalla-vm-1'
+    static_configs:
+      - targets: ['valhalla-vm.margusm.dev:9100']
