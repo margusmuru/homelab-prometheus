@@ -1,21 +1,19 @@
 ---
 # Deployed to every host in the deploy-node-exporter matrix (.gitlab-ci.yml).
+# Host network and PID namespace, so network/process metrics are the host's
+# own rather than the container's. Port 9100 is then the host's, not published
+# by Docker: a host running ufw must allow it (from prometheus on dev-1).
 services:
   node_exporter:
     image: quay.io/prometheus/node-exporter:v1.12.1
     container_name: node_exporter
-    ports:
-      - 9100:9100
     command: "--path.rootfs=/host"
+    network_mode: host
     pid: host
     restart: unless-stopped
     volumes:
-      - /:/host:ro
-    networks:
-      - monitoring
-
-networks:
-  monitoring:
-    name: monitoring
-    driver: bridge
-    attachable: true
+      - /:/host:ro,rslave
+    logging:
+      options:
+        max-size: 10m
+        max-file: "3"
