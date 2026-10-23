@@ -45,13 +45,14 @@ You can use the node exporter to collect the system metrics from all your Linux 
 | node-exporter-cloudy-vm-1    | cloudy-vm          | ![icon](.attachments/d.png) | **active** | http://192.168.40.102:9100 |
 | node-exporter-dev-1-vm-1     | dev-1-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.111:9100 |
 | node-exporter-dev-2-vm-1     | dev-2-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.112:9100 |
+| node-exporter-dev-3-vm-1     | dev-3-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.97:9100 |
 | node-exporter-prod-1-vm-1    | prod-1-vm          | ![icon](.attachments/d.png) | **active** | http://192.168.40.121:9100 |
 | node-exporter-valhalla-vm-1  | valhalla-vm        | ![icon](.attachments/d.png) | **active** | http://192.168.50.10:9100 |
 
 ## Configuration
 `deployments/node-exporter/docker-compose.yaml`:
 - `network_mode: host` and `pid: host`: network and process metrics are the host's own. With a bridge network node-exporter only sees its own container interface, so host traffic was missing.
-- Port 9100 is the host's port, not published by Docker, so it goes through the host firewall. Hosts with ufw (cloudy, portainer) allow it from prometheus on dev-1 only (`ufw_allow` in the linux-hosts Ansible repo). dev-1 scrapes it as `dev-1-vm.margusm.dev:9100`.
+- Port 9100 is the host's port, not published by Docker, so it goes through the host firewall. Hosts with ufw (cloudy, dev-3, portainer) allow it from prometheus on dev-1 only (`ufw_allow` in the linux-hosts Ansible repo). dev-1 scrapes it as `dev-1-vm.margusm.dev:9100`.
 - Log rotation: 10 MB x 3.
 - Footprint: ~0% CPU, ~10 MB RAM per host.
 
@@ -76,6 +77,7 @@ cAdvisor (Container Advisor) provides container users an understanding of the re
 | cadvisor-cloudy-vm-1     | cloudy-vm          | ![icon](.attachments/d.png) | **active** | http://192.168.40.102:8081 |
 | cadvisor-dev-1-vm-1      | dev-1-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.111:8081 |
 | cadvisor-dev-2-vm-1      | dev-2-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.112:8081 |
+| cadvisor-dev-3-vm-1      | dev-3-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.97:8081 |
 | cadvisor-prod-1-vm-1     | prod-1-vm          | ![icon](.attachments/d.png) | **active** | http://192.168.40.121:8081 |
 | cadvisor-valhalla-vm-1   | valhalla-vm        | ![icon](.attachments/d.png) | **active** | http://192.168.50.10:8081 |
 

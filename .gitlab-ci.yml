@@ -13,7 +13,7 @@ include:
   - component: $CI_SERVER_FQDN/components/docker/deploy-compose-matrix@~latest
     inputs:
       as: "deploy-node-exporter"
-      environments: [ cloudy, dev-1, dev-2, portainer, prod-1, valhalla ]
+      environments: [ cloudy, dev-1, dev-2, dev-3, portainer, prod-1, valhalla ]
       local_path: "deployments/node-exporter"
       remote_path: "deployments/node-exporter-$TARGET_ENV-vm-1"
 
@@ -27,7 +27,7 @@ include:
   - component: $CI_SERVER_FQDN/components/docker/deploy-compose-matrix@~latest
     inputs:
       as: "deploy-cadvisor"
-      environments: [ cloudy, dev-1, dev-2, portainer, prod-1, valhalla ]
+      environments: [ cloudy, dev-1, dev-2, dev-3, portainer, prod-1, valhalla ]
       local_path: "deployments/cadvisor"
       remote_path: "deployments/cadvisor-$TARGET_ENV-vm-1"
       substitute_vars: '$CADVISOR_DOCKER_LIB'   # optional per-host docker-root override (default /var/lib/docker)
