@@ -33,11 +33,15 @@ include:
       substitute_vars: '$CADVISOR_DOCKER_LIB'   # optional per-host docker-root override (default /var/lib/docker)
 
 # ============================================================
-# prometheus — stateful, one per instance (stable remote_path preserves TSDB)
-# Only two are actually used: dev-1 (central scraper) + dev-2 (remote-write receiver).
-# Both are grafana datasources. cloudy/portainer/dev-2-vm-2 were redundant → removed.
+# prometheus — the servers that store metrics; both are Grafana datasources.
+# One deploy-compose job per server (not a matrix): each keeps its TSDB in a
+# named volume, and the fixed remote_path keeps that volume across redeploys.
+# Each job runs only when its own deployments/ folder changes.
 # ============================================================
-# dev-1 (central scraper)
+# dev-1: central scraper. Pulls node-exporter (:9100) and cadvisor (:8081)
+# from every host listed in config/prometheus.yaml. Backs the Hosts and
+# Containers overview dashboards. Adding a host to the matrices above also
+# needs its two scrape jobs there.
   - component: $CI_SERVER_FQDN/components/docker/validate-compose@~latest
     inputs:
       as: "lint-prometheus-dev-1"
@@ -49,7 +53,9 @@ include:
       local_path: "deployments/prometheus-dev-1-vm-1"
       remote_path: "deployments/prometheus-dev-1-vm-1"
 
-# dev-2 (remote-write receiver, port 9090)
+# dev-2: remote-write receiver (192.168.40.112:9090/api/v1/write). Scrapes
+# nothing but itself; app metrics are pushed to it by the OpenTelemetry
+# collector (homelab/opentelemetry) and Tempo's metrics generator (homelab/tempo).
   - component: $CI_SERVER_FQDN/components/docker/validate-compose@~latest
     inputs:
       as: "lint-prometheus-dev-2"
