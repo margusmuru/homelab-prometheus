@@ -38,7 +38,7 @@ include:
 # named volume, and the fixed remote_path keeps that volume across redeploys.
 # Each job runs only when its own deployments/ folder changes.
 # ============================================================
-# dev-1: central scraper. Pulls node-exporter (:9100) and cadvisor (:8081)
+# dev-1: central scraper. Pulls node-exporter (:9100) and cadvisor (:8001)
 # from every host listed in config/prometheus.yaml. Backs the Hosts and
 # Containers overview dashboards. Adding a host to the matrices above also
 # needs its two scrape jobs there.

@@ -73,13 +73,13 @@ cAdvisor (Container Advisor) provides container users an understanding of the re
 
 | Deployment               | Location           | Tags                        | Status     | Url                                                              |
 | ------------------------ | ------------------ | --------------------------- | ---------- | ---------------------------------------------------------------- |
-| cadvisor-portainer-vm-1  | portainer-vm       | ![icon](.attachments/d.png) | **active** | http://192.168.50.102:8081 |
-| cadvisor-cloudy-vm-1     | cloudy-vm          | ![icon](.attachments/d.png) | **active** | http://192.168.40.102:8081 |
-| cadvisor-dev-1-vm-1      | dev-1-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.111:8081 |
-| cadvisor-dev-2-vm-1      | dev-2-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.112:8081 |
-| cadvisor-dev-3-vm-1      | dev-3-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.97:8081 |
-| cadvisor-prod-1-vm-1     | prod-1-vm          | ![icon](.attachments/d.png) | **active** | http://192.168.40.121:8081 |
-| cadvisor-valhalla-vm-1   | valhalla-vm        | ![icon](.attachments/d.png) | **active** | http://192.168.50.10:8081 |
+| cadvisor-portainer-vm-1  | portainer-vm       | ![icon](.attachments/d.png) | **active** | http://192.168.50.102:8001 |
+| cadvisor-cloudy-vm-1     | cloudy-vm          | ![icon](.attachments/d.png) | **active** | http://192.168.40.102:8001 |
+| cadvisor-dev-1-vm-1      | dev-1-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.111:8001 |
+| cadvisor-dev-2-vm-1      | dev-2-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.112:8001 |
+| cadvisor-dev-3-vm-1      | dev-3-vm           | ![icon](.attachments/d.png) | **active** | http://192.168.40.97:8001 |
+| cadvisor-prod-1-vm-1     | prod-1-vm          | ![icon](.attachments/d.png) | **active** | http://192.168.40.121:8001 |
+| cadvisor-valhalla-vm-1   | valhalla-vm        | ![icon](.attachments/d.png) | **active** | http://192.168.50.10:8001 |
 
 ## Configuration
 `deployments/cadvisor/docker-compose.yaml` trims cAdvisor's defaults, which cost 5-14% of a core and 80 MB-1.3 GB RAM per host:

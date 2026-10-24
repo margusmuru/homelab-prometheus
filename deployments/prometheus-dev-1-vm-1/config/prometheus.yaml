@@ -10,31 +10,31 @@ scrape_configs:
 
   - job_name: 'cadvisor-dev-1-vm-1'
     static_configs:
-      - targets: ['dev-1-vm.margusm.dev:8081']
+      - targets: ['dev-1-vm.margusm.dev:8001']
 
   - job_name: 'cadvisor-dev-2-vm-2'
     static_configs:
-      - targets: ['dev-2-vm.margusm.dev:8081']
+      - targets: ['dev-2-vm.margusm.dev:8001']
 
   - job_name: 'cadvisor-dev-3-vm-1'
     static_configs:
-      - targets: ['dev-3-vm.margusm.dev:8081']
+      - targets: ['dev-3-vm.margusm.dev:8001']
 
   - job_name: 'cadvisor-cloudy-vm-1'
     static_configs:
-      - targets: ['cloudy-vm.margusm.dev:8081']
+      - targets: ['cloudy-vm.margusm.dev:8001']
 
   - job_name: 'cadvisor-portainer-vm-1'
     static_configs:
-      - targets: ['portainer-vm.margusm.dev:8081']
+      - targets: ['portainer-vm.margusm.dev:8001']
 
   - job_name: 'cadvisor-prod-1-vm-1'
     static_configs:
-      - targets: ['prod-1-vm.margusm.dev:8081']
+      - targets: ['prod-1-vm.margusm.dev:8001']
 
   - job_name: 'cadvisor-valhalla-vm-1'
     static_configs:
-      - targets: ['valhalla-vm.margusm.dev:8081']
+      - targets: ['valhalla-vm.margusm.dev:8001']
 
 
 
