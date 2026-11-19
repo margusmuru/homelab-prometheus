@@ -5,7 +5,7 @@
 # by Docker: a host running ufw must allow it (from prometheus on dev-1).
 services:
   node_exporter:
-    image: quay.io/prometheus/node-exporter:v1.12.1
+    image: quay.io/prometheus/node-exporter:v1.13.1
     container_name: node_exporter
     command: "--path.rootfs=/host"
     network_mode: host
